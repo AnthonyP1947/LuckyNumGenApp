@@ -2,7 +2,9 @@ package com.mastercoding.luckynumgenapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,5 +22,21 @@ public class MainActivity extends AppCompatActivity {
         txt = findViewById(R.id.textView);
         editText = findViewById(R.id.editText);
         btn = findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user_name = editText.getText().toString();
+
+                // Explicit Intent
+                Intent i = new Intent(getApplicationContext(), LuckyNumberActivity.class);
+
+                // passing the name to second activity
+                i.putExtra("name",user_name);
+
+                startActivity(i);
+
+            }
+        });
     }
 }
